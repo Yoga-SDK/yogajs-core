@@ -17,10 +17,7 @@ function App() {
   }
 
   const handleGetProfile = () => {
-    yogajs.auth().getCurrentUser().then( data => {
-      console.log(data);
-      setUser(data);
-    }, err => console.log(err));
+    console.log(yogajs.db('/posts:1'));
   }
 
   const handleLogout = () => {
