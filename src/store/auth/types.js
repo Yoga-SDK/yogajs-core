@@ -1,0 +1,9 @@
+export const SIGN_IN_WITH_IDENTITY = 'SIGN_IN_WITH_IDENTITY';
+export const GET_CURRENT_USER = 'GET_CURRENT_USER';
+export const LOGOUT = 'LOGOUT';
+
+export default {
+  SIGN_IN_WITH_IDENTITY,
+  GET_CURRENT_USER,
+  LOGOUT
+}

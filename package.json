@@ -27,6 +27,12 @@
     "sucrase": "^3.12.1"
   },
   "dependencies": {
-    "nodemon": "^2.0.2"
+    "awilix": "^4.2.3",
+    "axios": "^0.19.2",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "reduxsauce": "^1.1.2"
   }
 }
