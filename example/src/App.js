@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import yogajs from '@yogajs/core';
 
 yogajs.initializeApp({
@@ -6,24 +6,20 @@ yogajs.initializeApp({
 })
 
 yogajs.auth().onAuthStateChanged(user => {
-  if (user) {
-    yogajs.auth().getCurrentUser().then( user => {
-      console.log(user);
-    });
-  } else {
-    console.log('logout');
-  }
-})
+  console.log(user);
+});
 
 function App() {
+  const [user, setUser] = useState({});
 
   const handleClick = () => {
     yogajs.auth().signInWithIdentityAndPassword('email@email.com', 'senha123');
   }
 
   const handleGetProfile = () => {
-    yogajs.auth().getCurrentUser().then( user => {
-      console.log(user)
+    yogajs.auth().getCurrentUser().then( data => {
+      console.log(data);
+      setUser(data);
     }, err => console.log(err));
   }
 
@@ -33,7 +29,7 @@ function App() {
 
   return (
     <div>
-      <h1>hello world</h1>
+      <h1>hello, { !user.name ? 'Please login' : user.name }</h1>
       <button onClick={handleClick}>Test connection</button> <br /><br />
       <button onClick={handleGetProfile}>Get profile</button> <br /><br />
       <button onClick={handleLogout}>Logout</button>

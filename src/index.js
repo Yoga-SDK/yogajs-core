@@ -5,6 +5,10 @@ import auth from './auth';
 
 const initializeApp = (payload) => {
   store.dispatch({ type: appTypes.INITIALIZE_APP, payload });
+  const authToken = JSON.parse(localStorage.getItem('yoga-auth')) || null;
+  if (authToken) {
+    store.dispatch(authToken);
+  }
 }
 
 export default {

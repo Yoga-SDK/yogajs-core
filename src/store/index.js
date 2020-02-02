@@ -13,4 +13,9 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
+const authToken = JSON.parse(localStorage.getItem('yoga-auth')) || null;
+if (authToken) {
+  store.dispatch(authToken);
+}
+
 export default store;
