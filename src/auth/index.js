@@ -17,10 +17,7 @@ export default () => {
       );
     },
     onAuthStateChanged(callback) {
-      this.getCurrentUser().then(user => callback(user), () => {
-        this.logout();
-        callback(null)
-      });
+      this.getCurrentUser().then(user => callback(user), () => this.logout());
       onAuthStateChanged(callback);
     },
     getCurrentUser() {
