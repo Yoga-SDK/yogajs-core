@@ -5,10 +5,6 @@ yogajs.initializeApp({
   appUrl: 'http://localhost:8000/yoga'
 })
 
-yogajs.auth().onAuthStateChanged(user => {
-  console.log(user);
-});
-
 function App() {
   const [user, setUser] = useState({});
 
@@ -17,7 +13,7 @@ function App() {
   }
 
   const handleGetProfile = () => {
-    console.log(yogajs.db('/posts:1'));
+    yogajs.db('/posts').where([['content', 'like', '%novo%']]).all().then( data => console.log(data));
   }
 
   const handleLogout = () => {

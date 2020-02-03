@@ -1,5 +1,5 @@
 import { getResource } from './utils';
-import server from '../../dist/server';
+import server from './../server';
 
 export default (path) => {
   const [{ method: resource }, ...executionList] = getResource(path);
