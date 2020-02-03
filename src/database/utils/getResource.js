@@ -2,12 +2,13 @@ export default (path) => {
   const resources = path.replace('/', '').split('/');
   const executionList = [];
 
+  let me = false;
   resources.forEach( param => {
     const [resource, id] = param.split(':');
     
     executionList.push({
-      method: resource,
-      params: []
+      method: me ? 'boot' : resource,
+      params: me ? [resource] : []
     });
 
     if (id) {
@@ -16,6 +17,8 @@ export default (path) => {
         params: [id]
       });
     }
+
+    me = (resource === 'me');
   })
 
   return executionList;

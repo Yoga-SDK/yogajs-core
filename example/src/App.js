@@ -5,6 +5,14 @@ yogajs.initializeApp({
   appUrl: 'http://localhost:8000/yoga'
 })
 
+yogajs.auth().onAuthStateChanged( user => {
+  if (user) {
+    console.log('logado', user);
+  } else {
+     console.log('não logado', user);
+  }
+});
+
 function App() {
   const [user, setUser] = useState({});
 
@@ -13,7 +21,9 @@ function App() {
   }
 
   const handleGetProfile = () => {
-    yogajs.db('/posts').where([['content', 'like', '%novo%']]).all().then( data => console.log(data));
+    yogajs.db('/me/posts:34').one().then(data => {
+      console.log(data)
+    });
   }
 
   const handleLogout = () => {

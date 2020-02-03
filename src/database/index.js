@@ -7,6 +7,9 @@ export default (path) => {
   return {
     resource,
     executionList,
+    order(field, asc) {
+      return this.call('order', [field, asc]);
+    },
     with(params) {
       return this.call('with', [params]);
     },
