@@ -1,13 +1,10 @@
 {
   "name": "@yogajs/core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./module/index.js",
   "browser": "./lib/index.js",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {
     "build": "yarn build:browser && yarn build:module && yarn build:node",
     "build:browser": "cross-env BABEL_ENV=browser babel ./src --out-dir ./lib --source-maps --copy-files",
