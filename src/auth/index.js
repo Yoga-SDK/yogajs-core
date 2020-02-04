@@ -2,7 +2,8 @@ import store, { authTypes } from './../store';
 import {
   signInWithIdentityAndPassword,
   onAuthStateChanged,
-  getCurrentUser
+  getCurrentUser,
+  createUser
 } from './services';
 
 export default () => {
@@ -25,6 +26,10 @@ export default () => {
     },
     logout() {
       return store.dispatch({ type: authTypes.LOGOUT });
+    },
+    createUser(data) {
+      return createUser(data);
     }
+    
   }
 }
