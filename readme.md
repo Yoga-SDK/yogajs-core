@@ -93,6 +93,18 @@ All auth methods are in auth() namespace. The available methods are:
   ```js
   yoga.auth().getCurrentUser().then( user => console.log('current logged user', user));
   ```
+
+## Create User
+### createUser()
+  It will create a new user and then will login this new user.
+  ```js
+  yogajs.auth().createUser({
+    name: 'name',
+    email: 'email@email.com',
+    password: '123456'
+  });
+  ```
+
 # Using Database Module
   To use all database features, use db() namespace in your @yogajs/core instance.
   When you call this method, you need to pass the reference of the resource you want to access. In the example bellow, we will fetch all posts from our database.
