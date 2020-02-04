@@ -1,6 +1,6 @@
 {
   "name": "@yogajs/core",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./module/index.js",
