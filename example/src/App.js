@@ -1,49 +1,47 @@
 import React, { useState } from 'react';
-import yogajs from '@yogajs/core';
+import { Container, Row, Col, Card, Tabs, Tab } from 'react-bootstrap';
+import Signup from './Auth/Signup';
+import Login from './Auth/Login';
+import { ToastContainer, toast } from 'react-toastify';
+import yoga from '@yogajs/core';
 
-yogajs.initializeApp({
+yoga.initializeApp({
   appUrl: 'http://localhost:8000/yoga'
 })
 
-yogajs.auth().onAuthStateChanged( user => {
+yoga.auth().onAuthStateChanged( user => {
   if (user) {
-    console.log('logado', user);
-  } else {
-     console.log('não logado', user);
+    toast.success(`Seja bem-vindo, ${user.name}`, {
+      position: toast.POSITION.BOTTOM_CENTER
+    });
   }
 });
 
-function App() {
-  const [user] = useState({});
-
-  const handleClick = () => {
-    yogajs.auth().signInWithIdentityAndPassword('leo@leo.com', '123456');
-  }
-
-  const handleGetProfile = () => {
-    yogajs.auth().getCurrentUser().then( user => console.log('current logged user', user));
-  }
-
-  const handleCreateUser = () => {
-    yogajs.auth().createUser({
-      name: 'fulano',
-      email: 'fulano@fulano.com',
-      password: '123456'
-    })
-  }
-
-  const handleLogout = () => {
-    yogajs.auth().logout();
-  }
+const App = () => {
+  const [key, setKey] = useState('login');
 
   return (
-    <div>
-      <h1>hello, { !user.name ? 'Please login' : user.name }</h1>
-      <button onClick={handleClick}>Test connection</button> <br /><br />
-      <button onClick={handleGetProfile}>Get profile</button> <br /><br />
-      <button onClick={handleCreateUser}>Create Profile</button> <br /><br />
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <>
+      <ToastContainer />
+      <Container>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Tabs activeKey={key} onSelect={k => setKey(k)}>
+                  <Tab className="pt-5" eventKey="login" title="Login">
+                    <Login />
+                  </Tab>
+                  <Tab className="pt-5" eventKey="signup" title="Signup">
+                    <Signup />
+                  </Tab>
+                </Tabs>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 

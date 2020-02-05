@@ -3,7 +3,7 @@ import store from './../store';
 
 export const responseErrorHandler = err => {
   if (err.response) {
-    return Promise.reject(err.response.data);
+    return Promise.reject(err.response.data.data);
   }
   return Promise.reject(err);
 }

@@ -9,12 +9,10 @@ import {
 export default () => {
   return {
     signInWithIdentityAndPassword(identity, password, provider) {
-      return store.dispatch(
-        signInWithIdentityAndPassword(
-          identity,
-          password,
-          provider
-        )
+      return signInWithIdentityAndPassword(
+        identity,
+        password,
+        provider
       );
     },
     onAuthStateChanged(callback) {
