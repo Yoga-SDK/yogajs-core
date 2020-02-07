@@ -3,7 +3,8 @@ import {
   signInWithIdentityAndPassword,
   onAuthStateChanged,
   getCurrentUser,
-  createUser
+  createUser,
+  updateProfile
 } from './services';
 
 export default () => {
@@ -29,6 +30,9 @@ export default () => {
     },
     createUser(data) {
       return createUser(data);
+    },
+    updateProfile(data) {
+      return updateProfile(data);
     }
     
   }

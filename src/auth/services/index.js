@@ -2,3 +2,4 @@ export { default as signInWithIdentityAndPassword } from './signInWithIdentityAn
 export { default as onAuthStateChanged } from './onAuthStateChanged';
 export { default as getCurrentUser } from './getCurrentUser';
 export { default as createUser } from './createUser';
+export { default as updateProfile } from './updateProfile';

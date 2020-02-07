@@ -32,6 +32,14 @@ function App() {
     })
   }
 
+  const handleUpdateProfile = () => {
+    yogajs.auth().updateProfile({
+      name: 'Ciclano',
+      email: 'ciclano@ciclano.com',
+      password: '654321'
+    })
+  }
+
   const handleLogout = () => {
     yogajs.auth().logout();
   }
@@ -42,6 +50,7 @@ function App() {
       <button onClick={handleClick}>Test connection</button> <br /><br />
       <button onClick={handleGetProfile}>Get profile</button> <br /><br />
       <button onClick={handleCreateUser}>Create Profile</button> <br /><br />
+      <button onClick={handleUpdateProfile}>Update Profile</button> <br /><br />
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
