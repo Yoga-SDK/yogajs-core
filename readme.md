@@ -97,8 +97,21 @@ All auth methods are in auth() namespace. The available methods are:
 ## Create User
 ### createUser()
   It will create a new user and then will login this new user.
+  To create a new user, you can call the method below.
   ```js
   yogajs.auth().createUser({
+    name: 'name',
+    email: 'email@email.com',
+    password: '123456'
+  });
+  ```
+
+  ## Update User
+  ### updateProfile()
+  It will update the curent use profile.
+  To update the current user, you can call the method below.
+  ```js
+  yogajs.auth().updateProfile({
     name: 'name',
     email: 'email@email.com',
     password: '123456'
