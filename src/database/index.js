@@ -23,7 +23,7 @@ export default (path) => {
       return this.call('create', [data]).send();
     },
     destroy() {
-      return this.call('destroy', []).send();
+      return this.call('delete', []).send();
     },
     paginate(page = 1, limit = 20) {
       return this.call('paginate', [page, limit]).send();

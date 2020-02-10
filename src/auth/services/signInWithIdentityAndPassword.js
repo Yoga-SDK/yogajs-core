@@ -1,9 +1,9 @@
 import server from './../../server';
-import { authTypes } from './../../store';
+import store, { authTypes } from './../../store';
 
 export default (identity, password, provider = 'email') => {
-  return (dispatch) => {
-    return server()
+  return new Promise(( resolve, reject) => {
+    server()
     .post('/auth/login', {
       provider: 'identityAndPassword',
       credentials: {
@@ -15,8 +15,9 @@ export default (identity, password, provider = 'email') => {
       } 
     })
     .then( payload => {
-      dispatch({ type: authTypes.SIGN_IN_WITH_IDENTITY, payload })
-      return payload;
-    }, err => err )
-  }
+      store.dispatch({ type: authTypes.SIGN_IN_WITH_IDENTITY, payload })
+      return resolve(payload);
+    })
+    .catch (err => reject(err));
+  });
 }
